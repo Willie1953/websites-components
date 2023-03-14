@@ -1,0 +1,137 @@
+.menu-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 101;
+}
+
+/* Checker */
+.menu-wrap .toggler {
+    cursor: pointer;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 0;
+    left: 0;
+    z-index: 102;
+    opacity: 0;
+}
+
+/* Hamburguer box */
+.menu-wrap .hamburguer {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 0;
+    left: 0;
+    z-index: 101;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hamburguer middle line */
+.menu-wrap .hamburguer > div {
+    position: relative;
+    height: 2px;
+    width: 55%;
+    background: var(--white-color);
+    transition: all var(--menu-speed) ease-in-out;
+}
+
+/* Hamburguer top and bottom lines */
+.menu-wrap .hamburguer > div::before,
+.menu-wrap .hamburguer > div::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: -10px;
+    background: inherit;
+    transition: all 0.4s ease-out 0.4s;
+    
+}
+
+.menu-wrap .hamburguer > div::after {
+    top: 10px;
+}
+
+/*  Animation Toggler */
+.menu-wrap .toggler:checked + .hamburguer > div {
+    transform: rotate(225deg);
+}
+
+/* Animation Turn lines into X */
+.menu-wrap .toggler:checked + .hamburguer > div::before,
+.menu-wrap .toggler:checked + .hamburguer > div::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+/* Animation Show Menu */
+.menu-wrap .toggler:checked ~ .menu {
+    visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div {
+    transform: scale(1);
+    transition-duration: var(--menu-speed)
+}
+
+.menu-wrap .toggler:checked ~ .menu > div > div {
+    opacity: 1;
+    transition: opacity 0.4s ease 0.4s;
+}
+
+/* Menu */
+.menu-wrap .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+.menu-wrap .menu > div {
+    background: var(--overlay-color);
+    width: 300vw;
+    height: 300vh;
+    border-radius: 50%;
+    display: flex;
+    flex: none;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition: all 0.4s ease;
+}
+
+.menu-wrap .menu > div > div {
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu > div > div > ul > li {
+    list-style: none;
+    padding: 1rem;
+}
+
+.menu-wrap .menu > div > div > ul > li > a {
+    font-size: 1.5rem;
+    color: var(--white-color);
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+
+.menu-wrap .menu > div > div > ul > li > a:hover {
+    color: var(--secondary-color)
+}
+
